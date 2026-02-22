@@ -2,35 +2,30 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>STG Visit GPS Capture</title>
-<style>
-body {
-  font-family: Arial;
-  text-align: center;
-  margin-top: 100px;
-}
-</style>
+<title>Visit Entry</title>
 </head>
 <body>
-
-<h2>Capturing Location...</h2>
 
 <script>
 
 navigator.geolocation.getCurrentPosition(function(position) {
 
-  var lat = position.coords.latitude;
-  var long = position.coords.longitude;
+  fetch("https://script.google.com/macros/s/AKfycbyow2vxjBDFiSY8uwICNUWqBGLq73zE0JEmtI-q_J5Y33neCRwTp1bXwwBWSMLdtWcxkg/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      lat: position.coords.latitude,
+      long: position.coords.longitude
+    })
+  });
 
-  var formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdfee1LekAzzzPIgEw-b37j44SuGmWMxTGRJWVtnhPOjbhEog/viewform?usp=pp_url"
-    + "&entry.301870921=" + encodeURIComponent(lat)
-    + "&entry.206670083=" + encodeURIComponent(long)
-    + "&entry.816961561=Captured";
-
-  window.location.replace(formUrl);
+  window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSdfee1LekAzzzPIgEw-b37j44SuGmWMxTGRJWVtnhPOjbhEog/viewform";
 
 }, function(error){
   alert("Please enable GPS and refresh.");
+}, {
+  enableHighAccuracy: true,
+  timeout: 10000,
+  maximumAge: 0
 });
 
 </script>
