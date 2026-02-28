@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Visit Entry</title>
+<title>Client Visit Entry</title>
 </head>
 <body>
 
@@ -10,7 +10,7 @@
 
 navigator.geolocation.getCurrentPosition(function(position) {
 
-  fetch("https://script.google.com/macros/s/AKfycbyow2vxjBDFiSY8uwICNUWqBGLq73zE0JEmtI-q_J5Y33neCRwTp1bXwwBWSMLdtWcxkg/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbxn-sqIeNleehlHe1vHlrYxuq3Q05275KyowCyX10aOivqdf8Shm2c0xH89WYv85XWQ/exec", {
     method: "POST",
     body: JSON.stringify({
       lat: position.coords.latitude,
@@ -18,7 +18,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     })
   });
 
-  window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSdfee1LekAzzzPIgEw-b37j44SuGmWMxTGRJWVtnhPOjbhEog/viewform";
+  window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSdfee1LekAzzzPIgEw-b37j44SuGmWMxTGRJWVtnhPOjbhEog/viewform?usp=dialog";
 
 }, function(error){
   alert("Please enable GPS and refresh.");
